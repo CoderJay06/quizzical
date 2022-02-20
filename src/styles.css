@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f7fb;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.intro {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-title {
+}
+
+.intro-description {
+}
