@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function Intro() {
+export default function Intro(props) {
+  console.log(props);
   return (
     <>
       <div className="intro-lemony-blob"></div>
@@ -12,7 +13,9 @@ export default function Intro() {
           <p>Some description if needed</p>
         </div>
         <div className="intro-play-again">
-          <button>Start Quiz</button>
+          <button onClick={() => props.setActivePage("questions")}>
+            Start Quiz
+          </button>
         </div>
       </div>
       <div className="intro-baby-blob"></div>
