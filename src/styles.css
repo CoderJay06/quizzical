@@ -61,3 +61,46 @@ body {
   bottom: 0%;
   background: #deebf8;
 } */
+
+.questions {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.question {
+  text-align: left;
+  padding: 1em;
+  /* border-bottom: 0.1px solid */
+}
+
+.answers {
+  width: 100%;
+  display: flex;
+  margin-bottom: 1.5em;
+}
+
+.question-answer-btn,
+.check-answers-btn {
+  margin-right: 1em;
+  padding: 0.5em;
+  border: 1px solid #000;
+  border-radius: 15px;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #d6dbf5;
+}
+
+.check-answers-btn {
+  margin-top: 1em;
+  padding: 1em;
+  background-color: #4d5b9e;
+  color: #fff;
+}
+
+.question-answer-btn:hover,
+.check-answers-btn:hover {
+  opacity: 0.7;
+}
