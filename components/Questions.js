@@ -27,32 +27,25 @@ export default function Questions() {
   useEffect(() => {
     fetch(openTDBUrl)
       .then((res) => res.json())
-      .then((data) => {
-        setQuestions(data.results);
-        // const questionAnswers = questions
-        //   .map((q) => generateNewAnswers(q))
-        //   .flat();
-        // setAnswers(questionAnswers);
-        // console.log(answers);
-      });
+      .then((data) => setQuestions(data.results));
   }, []);
   console.log(questions);
 
-  function updateAnswers(id) {
-    setAnswers((oldAnswers) => {
-      return oldAnswers.map((ans) =>
-        ans.id === id ? { ...ans, isSelected: !ans.isSelected } : ans
-      );
-    });
+  function updateAnswer(e, id) {
+    if (e.target.classList.contains("selected")) {
+      e.target.classList.remove("selected");
+    } else {
+      e.target.classList.add("selected");
+    }
   }
 
   function renderAnswers(answers) {
     return answers.map((answer) => (
       <button
-        style={{ backgroundColor: answer.isSelected ? "red" : "lightblue" }}
+        // style={{ backgroundColor: answer.isSelected ? "red" : "lightblue" }}
         key={nextId()}
         className="question-answer-btn"
-        onClick={() => updateAnswers(answer.id)}
+        onClick={(e) => updateAnswer(e, answer.id)}
       >
         {answer.value}
       </button>
@@ -67,7 +60,7 @@ export default function Questions() {
     };
   }
 
-  function generateNewAnswers(incorrectAnswers) {
+  function generateAnswers(incorrectAnswers) {
     const array = [];
     for (const ans of incorrectAnswers) {
       array.push(generateAnswer(ans));
@@ -80,9 +73,9 @@ export default function Questions() {
       <div key={nextId()} className="question">
         <h4>{data.question}</h4>
         <div className="answers">
-          {renderAnswers(generateNewAnswers(data.incorrect_answers))}
+          {renderAnswers(generateAnswers(data.incorrect_answers))}
         </div>
-        {/* {generateNewAnswers(data.incorrect_answers)} */}
+        <hr />
       </div>
     ));
   }
@@ -92,8 +85,8 @@ export default function Questions() {
       <div className="questions">
         <h1>Questions</h1>
         {renderQuestions()}
+        <button className="check-answers-btn">Check answers</button>
       </div>
-      <button className="check-answers-btn">Check answers</button>
     </>
   );
 }
