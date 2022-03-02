@@ -16,11 +16,14 @@ import nextId from "react-id-generator";
   0: "512MB"
   1: "5GB"
   2: "Unlimited"
+
+  - disable other answers when answer is selected
+  
 */
 
 export default function Questions() {
   const [questions, setQuestions] = useState([]);
-  const [answers, setAnswers] = useState([]);
+  const [chosenAnswers, setChosenAnswers] = useState([]);
   // const [isSelected, setIsSelected] = useState(false);
   const openTDBUrl =
     "https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple";
@@ -31,12 +34,14 @@ export default function Questions() {
   }, []);
   console.log(questions);
 
-  function updateAnswer(e, id) {
+  function updateAnswer(e, answer) {
     if (e.target.classList.contains("selected")) {
       e.target.classList.remove("selected");
     } else {
       e.target.classList.add("selected");
     }
+
+
   }
 
   function renderAnswers(answers) {
@@ -45,7 +50,7 @@ export default function Questions() {
         // style={{ backgroundColor: answer.isSelected ? "red" : "lightblue" }}
         key={nextId()}
         className="question-answer-btn"
-        onClick={(e) => updateAnswer(e, answer.id)}
+        onClick={(e) => updateAnswer(e, answer)}
       >
         {answer.value}
       </button>

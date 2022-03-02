@@ -8,6 +8,8 @@ export default function App() {
 
   return (
     <div className="App">
+      <div className="lemony-blob"></div>
+      <div className="baby-blob"></div>
       {activePage === "intro" ? (
         <Intro setActivePage={setActivePage} />
       ) : activePage === "questions" ? (
