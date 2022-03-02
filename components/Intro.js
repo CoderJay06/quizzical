@@ -4,7 +4,6 @@ export default function Intro(props) {
   console.log(props);
   return (
     <>
-      <div className="intro-lemony-blob"></div>
       <div className="intro">
         <div className="intro-title">
           <h1>Quizzical</h1>
@@ -18,7 +17,6 @@ export default function Intro(props) {
           </button>
         </div>
       </div>
-      <div className="intro-baby-blob"></div>
     </>
   );
 }
